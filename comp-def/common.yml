@@ -1,0 +1,14 @@
+packages:
+  - github.com/graniticio/granitic/v2/ws/handler
+  - go-granitic-abhinav/endpoint/healthchk
+components:
+  healthchkLogic:
+    type: healthchk.GetLogic
+    ServiceName: "my service"
+  healthchkHandler:
+    type: handler.WsHandler
+    HTTPMethod: GET
+    Logic: ref:healthchkLogic
+    PathPattern: "^/service/status"
+    FieldQueryParam:
+      Name: "name"
